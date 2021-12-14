@@ -41,8 +41,10 @@ class LocationIndex extends React.PureComponent {
     }
 
     onDownDropClick = () => {
+        const { calculateParentPosition } = this.props;
+        const getPosition = calculateParentPosition || this.getPosition;
         Keyboard.dismiss();
-        this.getPosition((position)=>{
+        getPosition((position)=>{
             let downDropData = this.props.menuList || [];
             if (downDropData&&downDropData.length>0) {
                 this.itemModal&&this.itemModal.onShow(downDropData,position,(onClickRes)=>{
