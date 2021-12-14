@@ -53,12 +53,14 @@ class LocationIndex extends React.PureComponent {
     }
 
     render() {
+        const { CustomTouchable } = this.props;
+        const Touchable = CustomTouchable || TouchableOpacity;
         return (
-            <TouchableOpacity onPress={()=>this.onDownDropClick()} activeOpacity={0.7}
+            <Touchable onPress={()=>this.onDownDropClick()} activeOpacity={0.7}
                 collapsable={false} ref={(o)=>this.listRow=o} style={this.props.containerStyle}>
                 {this.props.children}
                 <LocationModal ref={(o)=>this.itemModal=o} {...this.props} />
-            </TouchableOpacity>
+            </Touchable>
         );
     }
 }
